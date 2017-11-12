@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var postSchema = require('./postSchema');
+
 var userSchema = new Schema({
     name: {
         type: String,
@@ -10,7 +12,8 @@ var userSchema = new Schema({
         },
         required: [true, 'Name is required']
     },
-    postCount: Number
+    postCount: Number,
+    posts: [postSchema]
 });
 
 var User = mongoose.model('user', userSchema);
